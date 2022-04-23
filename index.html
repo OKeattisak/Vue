@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vee-validate"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+</head>
+<body>
+
+    <div id="app">
+        {{ message }}
+
+        <form @submit.prevent="onSubmit" ref="form">
+            <input name="suppliler_name" v-model="message">
+            <!-- <input type="submit"> -->
+            <a href="#" v-on:click="onSubmit">SUBMIT</a>
+        </form>
+
+    </div>
+    <script>
+        const app = Vue.createApp({
+          data() {
+            return {
+              message: ''
+            }
+          },
+          mounted() {
+              console.log('Mounted')
+             
+          },
+          methods: {
+            onSubmit(){
+                console.log(this.$refs)
+                // if(!this.message){
+                //     alert('Please Add a Name')
+                //     return
+                // }
+                // this.$refs.form.submit()
+            }
+          },
+        })
+        app.use(VeeValidate)
+        app.mount('#app')
+        
+      </script>
+      
+
+</body>
+</html>
